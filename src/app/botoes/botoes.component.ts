@@ -1,16 +1,18 @@
-import { NgClass, NgFor, NgIf, NgStyle } from '@angular/common';
-import { Component, Input, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-botoes',
   standalone: true,
-  imports: [NgClass, NgFor, NgIf, NgStyle, NgClass],
+  imports: [CommonModule],
   templateUrl: './botoes.component.html',
-  styleUrl: './botoes.component.scss'
+  styleUrls: ['./botoes.component.scss']
 })
 export class BotoesComponent {
-
-
-
-  
+  numbers: number[][] = [
+    [9, 8, 7],
+    [6, 5, 4],
+    [3, 2, 1],
+    [0]
+  ];
 }

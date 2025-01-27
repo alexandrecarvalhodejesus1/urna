@@ -1,17 +1,11 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
-import { NgClass, NgFor, NgIf, NgStyle} from '@angular/common';
-
+import { BotoesComponent } from './botoes/botoes.component';
 
 @Component({
   selector: 'app-root',
-  standalone: true,
-  imports: [RouterOutlet, NgFor, NgIf, NgStyle, NgClass],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.scss'
-
+  styleUrls: ['./app.component.scss'],
+  standalone: true,
+  imports: [BotoesComponent]
 })
-
-export class AppComponent {
-  title = 'Urna';
-}
+export class AppComponent {}

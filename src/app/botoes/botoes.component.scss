@@ -1,14 +1,11 @@
-:host { 
-    border: 1px solid black;
-    height: 33%;
-    width: 100%;
-}
-
-.divbtn{
-    width: 100%;
-    height: 100%;
+.button-row {
     display: flex;
-
+    justify-content: space-between;
+    margin-bottom: 10px;
 }
 
-.linha{ flex-direction: row;}
+.botao { 
+    width: 33%;
+    margin: 1px;
+    text-align: center;
+}

@@ -1,34 +1,31 @@
-
-.borda{
+.borda {
     border: 2px solid black;
     height: 500px;
     width: 900px;
     display: flex;
-   
 }
 
-.borda1{
+.borda1 {
     display: flex;
     flex-direction: column;
-    background-color:aliceblue;
+    background-color: aliceblue;
     border: 2px solid rgb(0, 0, 0);
     height: 95%;
     width: 60%;
     margin: 5px;
 }
-    
 
-.borda2{
+.borda2 {
     display: flex;
     flex-direction: column;
-    background-color: rgb(223, 223, 223);;
+    background-color: rgb(223, 223, 223);
     border: 2px solid black;
     height: 95%;
     width: 35%;
     margin: 5px;
 }
 
-.caixa-um{
+.caixa-um {
     background-color: white;
     border: 2px solid rgb(61, 61, 61);
     height: 15%;
@@ -39,30 +36,27 @@
     align-items: center;
 }
 
-.classe{ 
+.classe {
     margin: 10px;
     display: flex;
 }
 
-.linha{
+.linha {
     display: flex;
     border: 2px solid black;
     width: 350px;
-    
 }
 
-.caixa-dois{
+.caixa-dois {
     background-color: white;
     border: 2px solid rgb(61, 61, 61);
     height: 30%;
     width: 95%;
     display: flex;
     margin: 5px;
-
-    
 }
 
-.num-nome{ 
+.num-nome {
     border: 1px solid rgb(61, 61, 61);
     height: 90%;
     width: 60%;
@@ -71,36 +65,34 @@
     flex-direction: column;
 }
 
-.classe2{
+.classe2 {
     margin: 10px;
     display: flex;
 }
 
-.classe3{
+.classe3 {
     margin: 10px;
     display: flex;
 }
 
-.foto{
+.foto {
     border: 1px solid rgb(61, 61, 61);
     height: 90%;
     width: 35%;
     display: flex;
     margin: 5px;
-
 }
 
-.caixa-tres{
+.caixa-tres {
     background-color: white;
     border: 2px solid rgb(61, 61, 61);
     height: 40%;
     width: 95%;
     display: flex;
-        margin: 5px;
-
+    margin: 5px;
 }
 
-.caixa-numero{
+.caixa-numero {
     background-color: aliceblue;
     flex-direction: column;
     display: flex;
@@ -108,10 +100,9 @@
     height: 75%;
     width: 95%;
     margin: 5px;
-
 }
 
-.voto{
+.voto {
     background-color: white;
     align-items: center;
     display: flex;
@@ -119,5 +110,14 @@
     height: 15%;
     width: 95%;
     margin: 5px;
+}
 
+.caixa-voto {
+    display: flex;
+    justify-content: center; 
+    align-items: center;
+    border: 2px solid black;
+    height: 50%;
+    width: 33%;
+    margin: 1px;
 }
