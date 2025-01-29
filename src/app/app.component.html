@@ -7,8 +7,12 @@
         <div class="caixa-dois"> 
             <div class="num-nome">
                 <div class="classe2">Numero</div>
-                <div class="classe3">Nome</div>
+                <app-numero-tela [numero]="numeroDigitado1"  ></app-numero-tela>
+                <app-numero-tela [numero]="numeroDigitado2"  ></app-numero-tela>
+                <app-numero-tela [numero]="numeroDigitado3"  ></app-numero-tela>
+
             </div>
+            <div class="classe3">Nome</div>
             <div class="foto"></div>
         </div>
         <div class="caixa-tres"></div>
@@ -16,12 +20,12 @@
     
     <div class="borda2">
         <div class="caixa-numero">
-            <app-botoes></app-botoes>
+            <app-botoes (numeroClicado)="CapturarNumeroClicado($event)"> </app-botoes>
         </div>
         <div class="voto">
-            <div class="caixa-voto">branco</div>
-            <div class="caixa-voto">corrige</div>
-            <div class="caixa-voto">comfirma</div>
+            <div class="caixa-voto">Branco</div>
+            <div class="caixa-voto">Corrige</div>
+            <div class="caixa-voto">Confirma</div>
         </div>
     </div>
 </div>

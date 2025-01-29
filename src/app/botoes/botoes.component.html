@@ -1,3 +1,2 @@
-<div class="button-row" *ngFor="let row of numbers">
-    <button class="botao" *ngFor="let number of row" [ngClass]="{'linha': number % 2 === 0}">{{ number === 0 ? 0 : number }}</button>
-</div>
+<button (click)="ObterNumeroClicado(number)" *ngFor="let number of numbers" class="botao"> {{ number }}</button>
+
