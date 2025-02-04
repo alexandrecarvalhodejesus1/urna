@@ -1,31 +1,30 @@
 <div class="borda">
     <div class="borda1">
         <div class="caixa-um"> 
-            <div class="classe">Professor e Auxiliar</div>
+            <div class="classe">{{tipoVoto}}</div>
             <div class="linha"></div>
         </div>
         <div class="caixa-dois"> 
             <div class="num-nome">
-                <div class="classe2">Numero</div>
-                <app-numero-tela [numero]="numeroDigitado1"  ></app-numero-tela>
-                <app-numero-tela [numero]="numeroDigitado2"  ></app-numero-tela>
-                <app-numero-tela [numero]="numeroDigitado3"  ></app-numero-tela>
+                <div class="classe3">Nome: {{nomeCandidato}}</div>
 
+                <app-numero-tela [numero]="numero1"></app-numero-tela>
+                <app-numero-tela [numero]="numero2"></app-numero-tela>
+                <app-numero-tela [numero]="numero3"></app-numero-tela>
             </div>
-            <div class="classe3">Nome</div>
             <div class="foto"></div>
         </div>
-        <div class="caixa-tres"></div>
     </div>  
-    
+
     <div class="borda2">
         <div class="caixa-numero">
-            <app-botoes (numeroClicado)="CapturarNumeroClicado($event)"> </app-botoes>
+            <app-botoes (numeroClicado)="capturarNumeroClicado($event)"> </app-botoes>
         </div>
         <div class="voto">
-            <div class="caixa-voto">Branco</div>
-            <div class="caixa-voto">Corrige</div>
-            <div class="caixa-voto">Confirma</div>
+            <button class="caixa-voto">Branco</button>
+            <button (click)="limparVariaveisNumero()" class="caixa-voto" style="background-color: orangered;">Corrige</button>
+            <button (click)="Confirma()" class="caixa-voto" style="background-color: greenyellow">Confirma</button>
         </div>
     </div>
-</div>
+
+    </div>
