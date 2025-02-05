@@ -18,10 +18,7 @@ export class AppComponent {
   numero1: string = '';
   numero2: string = '';
   numero3: string = '';
-
-
   nomeCandidato: string = '';
-
   tipoVoto: 'PROFESSOR' | 'AJUDANTE' = 'PROFESSOR'
 
 
