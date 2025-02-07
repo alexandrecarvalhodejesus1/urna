@@ -10,7 +10,7 @@ import { NgIf } from '@angular/common';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
   standalone: true,
-  imports: [BotoesComponent, NumeroTelaComponent, NgIf]
+  imports: [BotoesComponent, NumeroTelaComponent]
 })
 export class AppComponent {
 
