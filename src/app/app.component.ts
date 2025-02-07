@@ -3,13 +3,14 @@ import { BotoesComponent } from './botoes/botoes.component';
 import { NumeroTelaComponent } from "./numero-tela/numero-tela.component";
 import { Professor } from './professor';
 import { Ajudante } from './ajudante';
+import { NgIf } from '@angular/common';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
   standalone: true,
-  imports: [BotoesComponent, NumeroTelaComponent]
+  imports: [BotoesComponent, NumeroTelaComponent, NgIf]
 })
 export class AppComponent {
 
@@ -20,7 +21,7 @@ export class AppComponent {
   numero3: string = '';
   nomeCandidato: string = '';
   tipoVoto: 'PROFESSOR' | 'AJUDANTE' = 'PROFESSOR'
-
+  votaçao: boolean = true;
 
 
 
@@ -95,7 +96,7 @@ export class AppComponent {
 
     if (ajudanteLocalizado) {
       this.nomeCandidato = ajudanteLocalizado.nome;
-      //ngif no html de uma div que tem o texto FIM
+      
 
     }
   }
