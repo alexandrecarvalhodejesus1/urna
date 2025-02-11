@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { BotoesComponent } from './botoes/botoes.component';
 import { NumeroTelaComponent } from "./numero-tela/numero-tela.component";
-import { Professor } from './professor';
-import { Ajudante } from './ajudante';
+import { Professor } from './professor.model';
+import { Ajudante } from './ajudante.model';
 import { NgIf } from '@angular/common';
 
 @Component({
@@ -10,93 +10,116 @@ import { NgIf } from '@angular/common';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
   standalone: true,
-  imports: [BotoesComponent, NumeroTelaComponent]
+  imports: [BotoesComponent, NumeroTelaComponent, NgIf,]
 })
 export class AppComponent {
 
-  professoresSelecionados: Professor[] = [];
-  ajudantesSelecionados: Ajudante[] = [];
   numero1: string = '';
   numero2: string = '';
   numero3: string = '';
+  professoresSelecionados: Professor[] = [];
+  ajudantesSelecionados: Ajudante[] = [];
   nomeCandidato: string = '';
   tipoVoto: 'PROFESSOR' | 'AJUDANTE' = 'PROFESSOR'
-  votaçao: boolean = true;
+  votacao: boolean = true;
 
 
 
   constructor() {
-    this.professoresSelecionados.push(
-      new Professor('alexandre', '100'),
-      new Professor('alexsander', '200'),
-      new Professor('alexandra', '300')
-    );
+      const Professor1 = new Professor('alexandre', '100');
+      const Professor2 = new Professor('alexsander', '200');
+      const Professor3 = new Professor('alexandra', '300');
 
-    this.ajudantesSelecionados.push(
-      new Ajudante('adelia', '111'),
-      new Ajudante('adilson', '222'),
-      new Ajudante('adelio', '333')
-    );
+      const Ajudante1 = new Ajudante('adelia', '400');
+      const Ajudante2 = new Ajudante('adilson', '500');
+      const Ajudante3 = new Ajudante('adelio', '600');
+
+      this.professoresSelecionados.push(Professor1);
+      this.professoresSelecionados.push(Professor2);
+      this.professoresSelecionados.push(Professor3);
+      
+      this.ajudantesSelecionados.push(Ajudante1);
+      this.ajudantesSelecionados.push(Ajudante2);
+      this.ajudantesSelecionados.push(Ajudante3);
   }
 
-  capturarNumeroClicado(numeroClicado: number) {
+  pintarnumerotela(numeroClicado: number) {
 
-    if (this.numero1.length == 0) {
+    if (this.numero1 == '') {
       this.numero1 = numeroClicado.toString();
       return;
     }
 
-    if (this.numero2.length == 0) {
+    if (this.numero2 == '') {
       this.numero2 = numeroClicado.toString();
       return;
     }
 
-    if (this.numero3.length == 0) {
+    if (this.numero3 == '') {
       this.numero3 = numeroClicado.toString();
-      this.LocalizarDadosCandidato();
+
+      if (this.tipoVoto == 'PROFESSOR') {
+        this.localizarProfessores(this.numero1 + this.numero2 + this.numero3);
+        
+      }
+      if (this.tipoVoto == 'AJUDANTE') {
+        this.localizarAjudantes(this.numero1 + this.numero2 + this.numero3);
+
+      }
     }
-
   }
 
-  LocalizarDadosCandidato() {
-    if (this.tipoVoto == 'PROFESSOR')
-      this.localizarProfessores()
-    else
-      this.localizarAjudantes();
 
-  }
 
   Confirma() {
-    if ((this.tipoVoto == 'PROFESSOR') && (this.nomeCandidato != '')) {
+    const numeroCompleto = this.numero1 + this.numero2 + this.numero3;
+    if (this.tipoVoto === 'PROFESSOR') 
+      
+    {
+      this.localizarProfessores(numeroCompleto);
+      if (this.nomeCandidato)
+      {
       this.limparVariaveisNumero();
-      return;
-    }
-
-    if ((this.tipoVoto == 'AJUDANTE') && (this.nomeCandidato != '')) {
-      this.limparVariaveisNumero();
-      return;
-    }
-  }
-
-
-
-  localizarProfessores() {
-    const numeroCombinado = this.numero1 + this.numero2 + this.numero3;
-    const professorLocalizado = this.professoresSelecionados.find(professor => professor.numero == numeroCombinado);
-
-    if (professorLocalizado) {
-      this.nomeCandidato = professorLocalizado.nome;
       this.tipoVoto = 'AJUDANTE';
     }
+    return;
+    }
+
+    if (this.tipoVoto === 'AJUDANTE') 
+      {
+        this.localizarAjudantes(numeroCompleto);
+      
+    if (this.nomeCandidato)
+    {
+      this.limparVariaveisNumero();
+      this.votacao = false;
+    }
+  }
   }
 
-  localizarAjudantes() {
-    const numeroCombinado = this.numero1 + this.numero2 + this.numero3;
-    const ajudanteLocalizado = this.ajudantesSelecionados.find(ajudate => ajudate.numero == numeroCombinado);
+  VotarBranco() {
+    if (this.tipoVoto === 'PROFESSOR') {
+      this.tipoVoto = 'AJUDANTE';
+      return;
+    }
+  
+    if (this.tipoVoto === 'AJUDANTE') {
+      this.votacao = false; 
+    }
+  }
+
+  localizarProfessores(numero: string) {
+    const professorLocalizado = this.professoresSelecionados.find(linha => linha.numero === numero);
+
+    if (professorLocalizado) {
+      this.nomeCandidato = professorLocalizado.nomeprofessor;
+    }
+  }
+  localizarAjudantes(numero: string) {
+    const ajudanteLocalizado = this.ajudantesSelecionados.find(linha => linha.numero === numero);
 
     if (ajudanteLocalizado) {
-      this.nomeCandidato = ajudanteLocalizado.nome;
-      
+      this.nomeCandidato = ajudanteLocalizado.nomeajudante;
 
     }
   }
@@ -108,14 +131,5 @@ export class AppComponent {
     this.nomeCandidato = '';
   }
 
-  // obterNomesProfessoresSelecionados(): string {
-  //   const numeroCombinado = this.numero1 + this.numero2 + this.numero3;
-  //   return this.mapaProfessores[numeroCombinado] || '';
-
-  // }
-
-  // obterNomesAjudantesSelecionados(): string {
-  //   const numeroCombinado = this.numero1 + this.numero2 + this.numero3;
-  //   return this.mapaAjudantes[numeroCombinado] || ''; 
-  // }
+  
 }

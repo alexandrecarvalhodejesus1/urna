@@ -1,27 +1,29 @@
 <div class="borda">
-    <div class="borda1">
-        <div class="caixa-um"> 
-            <div class="classe">{{tipoVoto}}</div>
+    <div class="borda1" >
+        <div id="divfim" *ngIf="votacao == false"> FIM DA VOTAÇÃO </div>
+        <div class="caixa-um" *ngIf="votacao == true"> 
+            <div class="classe"> {{tipoVoto}}</div>
             <div class="linha"></div>
         </div>
-        <div class="caixa-dois"> 
+        <div class="caixa-dois" *ngIf="votacao == true"> 
             <div class="num-nome">
-                <div class="classe3">Nome: {{nomeCandidato}}</div>
+                <div class="classe3">Nome:{{nomeCandidato}} </div>
 
                 <app-numero-tela [numero]="numero1"></app-numero-tela>
                 <app-numero-tela [numero]="numero2"></app-numero-tela>
                 <app-numero-tela [numero]="numero3"></app-numero-tela>
+
             </div>
-            <div class="foto"></div>
+            <div class="foto"> <img src="{{fotoCandidato}}" alt="Foto do Candidato"> </div>
         </div>
     </div>  
 
     <div class="borda2">
         <div class="caixa-numero">
-            <app-botoes (numeroClicado)="capturarNumeroClicado($event)"> </app-botoes>
+            <app-botoes (numeroClicado)="pintarnumerotela($event)"> </app-botoes>
         </div>
         <div class="voto">
-            <button class="caixa-voto">Branco</button>
+            <button  (click)="VotarBranco()" class="caixa-voto">Branco</button>
             <button (click)="limparVariaveisNumero()" class="caixa-voto" style="background-color: orangered;">Corrige</button>
             <button (click)="Confirma()" class="caixa-voto" style="background-color: greenyellow">Confirma</button>
         </div>
